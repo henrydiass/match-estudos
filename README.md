@@ -20,6 +20,8 @@ Estrutura do projeto
     - `AppView.java` — implementação da interface de visualização; entrada/saída da aplicação (console/GUI conforme implementação).
 6. `src/main/resources` — recursos da aplicação (configurações, mensagens, etc).
 
+UML de relação das classes:
+<img src="/images/uml-match-estudos.png" alt="UML do match de estudos" width="300">
 
 Padrões de projeto explorados
 - Observer / Publisher-Subscriber: comunicação entre view/controllers e serviços.
