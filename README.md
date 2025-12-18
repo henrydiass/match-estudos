@@ -21,7 +21,8 @@ Estrutura do projeto
 6. `src/main/resources` — recursos da aplicação (configurações, mensagens, etc).
 
 UML de relação das classes:
-<img src="/images/uml-match-estudos.png" alt="UML do match de estudos" width="300">
+<br>
+<img src="/images/uml-match-estudos.png" alt="UML do match de estudos" >
 
 Padrões de projeto explorados
 - Observer / Publisher-Subscriber: comunicação entre view/controllers e serviços.
