@@ -4,6 +4,25 @@ Descrição
 - Projeto para estudo do padrão de projeto Observer, implementado em Java.
 - Implementa um sistema simples de "match" de estudos: quando um novo aluno demonstra interesse em um tópico, ele é relacionado (match) a outros alunos interessados no mesmo tópico.
 
+## Justificativa técnica dentro do domínio
+
+No contexto do sistema:
+
+● O Subject pode ser o serviço de domínio responsável por gerenciar interesses e cadastros de alunos.
+
+● Os Observers podem ser componentes que reagem a esses eventos, como uma classe responsável por identificar matches ou enviar notificações internas.
+
+Exemplo de situações onde o Observer faz sentido no nosso projeto:
+
+● Quando um novo aluno é registrado com interesse em “Programação”, o sistema pode notificar automaticamente módulos que verificam compatibilidade com alunos já existentes.
+
+● Quando alguém adiciona um novo tópico de estudo, observers podem verificar se esse novo interesse gera matches imediatos.
+
+● Isso permite que a lógica de notificação fique desacoplada do cadastro em si, mantendo a coesão do domínio.
+
+
+A escolha do Observer não serve exatamente para "notificar as partes interessadas diretamente (como enviar alertas a pessoas)", pois isso já entraria no campo de eventos de aplicação ou mensagens para usuários reais. Porém, dentro da lógica do domínio, ele é apropriado para fazer com que diferentes componentes do sistema reajam automaticamente a mudanças, como a criação de novos matches.
+
 Estrutura do projeto
 1. `src/main/java/controllers`
     - `ApplicationController.java` — orquestra fluxo da aplicação (recebe eventos da view, chama serviços).
