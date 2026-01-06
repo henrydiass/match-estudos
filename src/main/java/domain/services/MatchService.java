@@ -2,6 +2,7 @@ package domain.services;
 
 import domain.entities.Estudante;
 import domain.entities.TopicoEstudo;
+import domain.exceptions.MateriaNotFoundException;
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -18,32 +19,22 @@ public class MatchService {
     }
 
     public boolean inscreverEstudante(Estudante estudante, String materia) {
-        Optional<TopicoEstudo> opt = topicos.stream()
+        TopicoEstudo topico = topicos.stream()
                 .filter(t -> materia.equals(t.getMateria()))
-                .findFirst();
+                .findFirst()
+                .orElseThrow(() -> new MateriaNotFoundException(materia));
 
-        if (opt.isEmpty()) {
-            System.out.println("A materia " + materia + " não esta cadastrada!");
-            return false;
-        }
-
-        TopicoEstudo topico = opt.get();
         topico.subscribe(estudante);
         System.out.println("Estudante " + estudante.getNome() + " inscrito na materia: " + topico.getMateria());
         return true;
     }
 
     public boolean unsubEstudante(Estudante estudante, String materia) {
-        Optional<TopicoEstudo> opt = topicos.stream()
+        TopicoEstudo topico = topicos.stream()
                 .filter(t -> materia.equals(t.getMateria()))
-                .findFirst();
+                .findFirst()
+                .orElseThrow(() -> new MateriaNotFoundException(materia));
 
-        if (opt.isEmpty()) {
-            System.out.println("A materia " + materia + " não esta cadastrada!");
-            return false;
-        }
-
-        TopicoEstudo topico = opt.get();
         topico.unsubscribe(estudante);
         System.out.println("Estudante " + estudante.getNome() + " removido na materia: " + topico.getMateria());
         return true;
